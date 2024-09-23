@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    int state = -1
+    int selLevel = -1
+    GameObject[] levels;
+    int liveChickens = 0;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
-        
+        switch (state) {
+            case 0: StartGame(); break;
+            case 1: RunGame(); break;
+            case 2: EndGame(); break;
+        }
     }
 }
