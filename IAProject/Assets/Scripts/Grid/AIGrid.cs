@@ -19,11 +19,6 @@ public class AIGrid : MonoBehaviour
         GetMeshVertex();
     }
 
-    private void Update()
-    {
-        GetMeshVertex();
-    }
-
     void GetMeshVertex()
     {
         mesh = GetComponent<MeshFilter>().mesh;
@@ -39,10 +34,6 @@ public class AIGrid : MonoBehaviour
         Node firstNode = new Node(meshVertex[0]);
     }
 
-    private void CreateInitialLine()
-    {
-
-    }
 
     void OnDrawGizmos()
     {
