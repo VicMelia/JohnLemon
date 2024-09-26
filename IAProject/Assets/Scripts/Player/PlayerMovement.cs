@@ -15,7 +15,6 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody m_Rigidbody;
     private Vector3 m_Movement;
 
-
     //Ground detection
     private float m_RaycastOffset = 0.5f;
 
@@ -30,10 +29,22 @@ public class PlayerMovement : MonoBehaviour
 
     private float jumpCooldownTime = 0.5f;
 
+    //Sound detection
+    public SphereCollider m_SoundSphere;
+
+    private float minSoundRadius = 4f;
+
+    private float maxSoundRadius = 8f;
+
+    private float actualRadius;
+
+    private float soundSpeed = 6f; //Sound radius increases/decreases over time
+
     void Start()
     {
-        InitializeVariables();
+        
         m_Rigidbody = GetComponent<Rigidbody>();
+        InitializeVariables();
     }
 
     void Update()
@@ -50,8 +61,18 @@ public class PlayerMovement : MonoBehaviour
         if(!grounded) grounded = CheckGrounded();
         else if (grounded && canJump && Input.GetButtonDown("Jump")) Jump();
 
-        //Run
-        currentSpeed = Input.GetKey(KeyCode.LeftShift)? runSpeed : moveSpeed;
+        //Run and sound detection
+        if(Input.GetKey(KeyCode.LeftShift)){
+
+            currentSpeed = runSpeed;
+            if(actualRadius < maxSoundRadius) SetSoundRadius(actualRadius + soundSpeed * Time.deltaTime);
+
+        } 
+
+        else{
+            currentSpeed = moveSpeed;
+            if(actualRadius > minSoundRadius) SetSoundRadius(actualRadius - soundSpeed * Time.deltaTime);
+        }
             
     }
 
@@ -78,14 +99,14 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    IEnumerator JumpCooldown(float c){
+    IEnumerator JumpCooldown(float c){ //This fixes double jump bug after jumping first frame
 
         yield return new WaitForSeconds(c);
         canJump = true;
 
     }
 
-    bool CheckGrounded(){
+    bool CheckGrounded(){ //Raycast downwards the player
 
         RaycastHit hit;
         m_RaycastOrigin = transform.position;
@@ -97,5 +118,12 @@ public class PlayerMovement : MonoBehaviour
 
         grounded = true;
         canJump = true;
+        m_SoundSphere.radius = minSoundRadius;
+        actualRadius = minSoundRadius;
+    }
+
+    void SetSoundRadius(float r){
+        m_SoundSphere.radius = r;
+        actualRadius = r;
     }
 }
