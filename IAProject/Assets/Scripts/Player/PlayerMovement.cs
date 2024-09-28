@@ -132,13 +132,18 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void ActiveMovement(){
-        if(grounded && Input.GetKey(KeyCode.E) && holeTarget != null){ //Jumps to the hole
+        if(holeTarget!= null){
+            float d = Vector3.Distance(transform.position,holeTarget.position);
+            if(d < 5f && grounded && Input.GetKey(KeyCode.E) && holeTarget != null){ //Jumps to the hole
             status = Status.Interacting;
             float jumpBoost = 1.5f;
             lastPosition = transform.position;
             m_Rigidbody.AddForce(Vector3.up * jumpForce* jumpBoost, ForceMode.Impulse);
             
         }
+            
+        }
+        
     }
 
     void InteractingMovement(){ //Jumping to the hole (move plus rotation)
