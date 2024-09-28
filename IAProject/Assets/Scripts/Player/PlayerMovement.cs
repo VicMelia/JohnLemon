@@ -42,8 +42,6 @@ public class PlayerMovement : MonoBehaviour
     private float soundSpeed = 6f; //Sound radius increases/decreases over time
 
     //Interaction
-
-    private SphereCollider m_InteractionCollider;
     private Transform holeTarget;
 
     private MeshRenderer m_MeshRenderer;
@@ -60,92 +58,44 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        status = Status.Active;
         m_Rigidbody = GetComponent<Rigidbody>();
-        m_InteractionCollider = GetComponent<SphereCollider>();
         m_MeshRenderer = GetComponent<MeshRenderer>();
         InitializeVariables();
     }
 
     void Update()
     {
-
-        Debug.Log(status);
-
         if(status == Status.Active){
 
             CalculateMovement();
-            if(Input.GetKey(KeyCode.E) && holeTarget != null){ //Jumps to the hole
-                status = Status.Interacting;
-                float jumpBoost = 1.5f;
-                lastPosition = transform.position;
-                m_Rigidbody.AddForce(Vector3.up * jumpForce* jumpBoost, ForceMode.Impulse);
-                
-            }
+            ActiveMovement();
         }
 
         else if(status == Status.Interacting){ //Jumps to the hole
-
-            Vector3 targetDirection = holeTarget.position - transform.position;
-            float singleStep = 5f * Time.deltaTime;
-            Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
-            transform.rotation = Quaternion.LookRotation(newDirection);
-
-            transform.position = Vector3.MoveTowards(transform.position, holeTarget.position, 6f * Time.deltaTime);
-            float d = Vector3.Distance(transform.position, holeTarget.position);
-            if(d < 0.1f){
-                status = Status.Hidden;
-                m_MeshRenderer.enabled = false;
-                transform.GetChild(0).gameObject.SetActive(false);
-                
-            }
-
-
+            InteractingMovement();
         }
 
         else if(status == Status.Hidden){
 
-            if(Input.GetKey(KeyCode.E)){ //Exits from the hole
-                status = Status.Leaving;
-                m_MeshRenderer.enabled=true;
-                transform.GetChild(0).gameObject.SetActive(true);
-                //transform.forward = holeTarget.forward;
-                Vector3 newDir = lastPosition - transform.position;
-                transform.forward = newDir;
-                float jumpBoost = 1.5f;
-                m_Rigidbody.AddForce(Vector3.up * jumpForce* jumpBoost, ForceMode.Impulse);
-            }
+            HiddenMovement();
 
         }
 
         else{
-            transform.position = Vector3.MoveTowards(transform.position, lastPosition, 4f * Time.deltaTime);
-            float d = Vector3.Distance(transform.position, lastPosition);
-            if(d < 0.1f){
-                //holeTarget = null;
-                lastPosition = Vector3.zero;
-                status = Status.Active;
-                
-            }
+            LeavingMovement();
         }
 
         
-
-    
-        
-            
     }
 
     void FixedUpdate()
     {
         if (status == Status.Active && m_Movement.magnitude > 0)
         {
-            // Move the player using the movement vector multiplied by speed
             Vector3 targetPosition = m_Rigidbody.position + m_Movement * currentSpeed * Time.fixedDeltaTime;
             //m_Rigidbody.velocity = new Vector3(m_Movement.x, 0f, m_Movement.z);
             m_Rigidbody.MovePosition(targetPosition);
 
-            // Calculate the desired forward direction and rotation
             Quaternion targetRotation = Quaternion.LookRotation(m_Movement);
             m_Rigidbody.MoveRotation(Quaternion.Slerp(m_Rigidbody.rotation, targetRotation, turnSpeed * Time.fixedDeltaTime));
         }
@@ -181,6 +131,59 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    void ActiveMovement(){
+        if(grounded && Input.GetKey(KeyCode.E) && holeTarget != null){ //Jumps to the hole
+            status = Status.Interacting;
+            float jumpBoost = 1.5f;
+            lastPosition = transform.position;
+            m_Rigidbody.AddForce(Vector3.up * jumpForce* jumpBoost, ForceMode.Impulse);
+            
+        }
+    }
+
+    void InteractingMovement(){ //Jumping to the hole (move plus rotation)
+
+        Vector3 targetDirection = holeTarget.position - transform.position;
+        float singleStep = 5f * Time.deltaTime;
+        Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
+        transform.rotation = Quaternion.LookRotation(newDirection);
+
+        transform.position = Vector3.MoveTowards(transform.position, holeTarget.position, 6f * Time.deltaTime);
+        float d = Vector3.Distance(transform.position, holeTarget.position);
+        if(d < 0.1f){
+            status = Status.Hidden;
+            m_MeshRenderer.enabled = false;
+            transform.GetChild(0).gameObject.SetActive(false);
+                
+        }
+    }
+
+    void HiddenMovement(){ //Hidden movement (zero)
+
+        if(Input.GetKey(KeyCode.E)){ //Exits from the hole
+            status = Status.Leaving;
+            m_MeshRenderer.enabled=true;
+            transform.GetChild(0).gameObject.SetActive(true);
+            //transform.forward = holeTarget.forward;
+            Vector3 newDir = lastPosition - transform.position;
+            transform.forward = newDir;
+            float jumpBoost = 1.5f;
+            m_Rigidbody.AddForce(Vector3.up * jumpForce* jumpBoost, ForceMode.Impulse);
+        }
+    }
+
+    void LeavingMovement(){ //Leaving the hole
+
+        transform.position = Vector3.MoveTowards(transform.position, lastPosition, 4f * Time.deltaTime);
+        float d = Vector3.Distance(transform.position, lastPosition);
+        if(d < 0.1f){
+            //holeTarget = null;
+            lastPosition = Vector3.zero;
+            status = Status.Active;
+            
+        }
+    }
+
     void Jump(){
         grounded = false;
         canJump = false;
@@ -210,6 +213,7 @@ public class PlayerMovement : MonoBehaviour
         canJump = true;
         m_SoundSphere.radius = minSoundRadius;
         actualRadius = minSoundRadius;
+        status = Status.Active; //Starts active
     }
 
     void SetSoundRadius(float r){
