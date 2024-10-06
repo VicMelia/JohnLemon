@@ -7,16 +7,20 @@ using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class AIGrid : MonoBehaviour
 {
-    public int gridResolution = 1;
+    public Node[,] grid;
+    //public int gridResolution = 1;
     Mesh mesh;
     public Vector3[] meshVertex;
+    public Vector3[] meshCorners;
     public List<Vector3> gridNodes = new List<Vector3>();
+
+    private float gridSideSize = 0;
 
 
     void Start()
     {
-
         GetMeshVertex();
+        GetMeshCorners();
     }
 
     void GetMeshVertex()
@@ -24,22 +28,39 @@ public class AIGrid : MonoBehaviour
         mesh = GetComponent<MeshFilter>().mesh;
         // Obtén los vértices y triángulos de la malla
         meshVertex = mesh.vertices;
-        transform.TransformPoints(meshVertex,meshVertex);
+        gridSideSize= Mathf.Sqrt(meshVertex.Length);
+        transform.TransformPoints(meshVertex,meshVertex); //Obtener puntos de la malla ya escalados
         CreateNavegationGrid();
+    }
+
+    void GetMeshCorners()
+    {
+
     }
 
     private void CreateNavegationGrid()
     {
-        float vertexDistance = Vector3.Distance(meshVertex[0], meshVertex[1]) / gridResolution;
-        Node firstNode = new Node(meshVertex[0]);
+        grid = new Node[gridSideSize, gridSideSize];
+        //float vertexDistance = Vector3.Distance(meshVertex[0], meshVertex[1]) / gridResolution;
+        grid[0][0] = new Node(meshVertex[0]);
+
+        for (int i = 1; i < meshVertex.Length; i++) {
+            if ()
+            {
+
+            }
+        }
+
     }
 
-
+    [ExecuteInEditMode]
     void OnDrawGizmos()
     {
         if (meshVertex != null) {
-            foreach (Vector3 v in meshVertex) {
-                Gizmos.DrawSphere(v, 0.1f);
+            for(int i =0; i<meshVertex.Length; i++) {
+                Gizmos.DrawSphere(meshVertex[i], 0.4f);
+                if (i == meshVertex.Length - 1) { break; }
+                Gizmos.DrawLine(meshVertex[i], meshVertex[i+1]);
             }
         }
 
