@@ -5,15 +5,12 @@ using UnityEngine;
 public class Node
 {
     public Vector3 position;
-    public List<Node> neighborNodes;
+    public bool accesible;
 
-    public Node(Vector3 pos)
+    public Node(Vector3 pos, bool access)
     {
         position = pos;
-        neighborNodes = new List<Node>();
+        accesible = access;
     }
 
-    public void IsCloseNodeAccesible()
-    {
-    }
 }
