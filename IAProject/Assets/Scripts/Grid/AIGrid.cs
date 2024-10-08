@@ -29,7 +29,7 @@ public class AIGrid : MonoBehaviour
     void GetMeshVertex()
     {
         mesh = GetComponent<MeshFilter>().mesh;
-        // Obtén los vértices y triángulos de la malla
+        // Obtï¿½n los vï¿½rtices y triï¿½ngulos de la malla
         meshVertex = mesh.vertices;
         gridSideSize= (int) Mathf.Sqrt(meshVertex.Length);
         transform.TransformPoints(meshVertex,meshVertex); //Obtener puntos de la malla ya escalados
