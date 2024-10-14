@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class GallinaManager {
 
-    //void Start() {}
+    void Start() {}
 
-    //void Update() {}
+    void Update() {
+        
+    }
 
-    //void scared() {}
+    void scared() {}
 
+    void scream() {}
 }
