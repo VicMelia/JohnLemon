@@ -8,107 +8,93 @@ using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class AIGrid : MonoBehaviour
 {
-    public Node[,] grid;
-    //public int gridResolution = 1;
-    Mesh mesh;
-    public Vector3[] meshVertex;
-    public Vector3[] meshCorners;
-    public List<Vector3> gridNodes = new List<Vector3>();
-   
-    private int gridSideSize = 0;
-    
-    public float sphereRadius = 1;
-    public LayerMask block;
+    public LayerMask unwalkableMask;
+    public Vector2 gridWorldSize;
+    public float nodeRadius;
+    Node[,] grid;
 
-    void Start()
+    float nodeDiameter;
+    int gridSizeX, gridSizeY;
+
+    void Awake()
     {
-        GetMeshVertex();
-        GetMeshCorners();
+        nodeDiameter = nodeRadius * 2;
+        gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeDiameter);
+        gridSizeY = Mathf.RoundToInt(gridWorldSize.y / nodeDiameter);
+        CreateGrid();
     }
 
-    void GetMeshVertex()
+    void CreateGrid()
     {
-        mesh = GetComponent<MeshFilter>().mesh;
-        // Obt�n los v�rtices y tri�ngulos de la malla
-        meshVertex = mesh.vertices;
-        gridSideSize= (int) Mathf.Sqrt(meshVertex.Length);
-        transform.TransformPoints(meshVertex,meshVertex); //Obtener puntos de la malla ya escalados
-        CreateNavegationGrid();
-    }
+        grid = new Node[gridSizeX, gridSizeY];
+        Vector3 worldBottomLeft = transform.position - Vector3.right * gridWorldSize.x / 2 - Vector3.forward * gridWorldSize.y / 2;
 
-    void GetMeshCorners()
-    {
-
-    }
-
-    private void CreateNavegationGrid()
-    {
-        grid = new Node[gridSideSize, gridSideSize];
-        //float vertexDistance = Vector3.Distance(meshVertex[0], meshVertex[1]) / gridResolution;
-        
-
-        for (int i = 0; i < gridSideSize; i++) {
-            for (int j = 0; j < gridSideSize; j++)
-            {
-                grid[j, i] = new Node(meshVertex[(i* gridSideSize) +j], Physics.CheckSphere(meshVertex[(i * gridSideSize) + j], sphereRadius, block));
-            }
-        }
-
-        ShowGridInConsole();
-
-    }
-
-    private void ShowGridInConsole()
-    {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < grid.GetLength(1); i++)
+        for (int x = 0; x < gridSizeX; x++)
         {
-            for (int j = 0; j < grid.GetLength(0); j++)
+            for (int y = 0; y < gridSizeY; y++)
             {
-                if(grid[i, j].accesible)
-                {
-                    sb.Append("1");
-                }
-                else
-                {
-                    sb.Append("0");
-                }
-                
-                sb.Append(' ');
+                Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.forward * (y * nodeDiameter + nodeRadius);
+                bool walkable = !(Physics.CheckSphere(worldPoint, nodeRadius, unwalkableMask));
+                grid[x, y] = new Node(walkable, worldPoint, x, y);
             }
-            sb.AppendLine();
         }
-        Debug.Log(sb.ToString());
     }
 
-    [ExecuteInEditMode]
+    public List<Node> GetNeighbours(Node node)
+    {
+        List<Node> neighbours = new List<Node>();
+
+        for (int x = -1; x <= 1; x++)
+        {
+            for (int y = -1; y <= 1; y++)
+            {
+                if (x == 0 && y == 0)
+                    continue;
+
+                int checkX = node.gridX + x;
+                int checkY = node.gridY + y;
+
+                if (checkX >= 0 && checkX < gridSizeX && checkY >= 0 && checkY < gridSizeY)
+                {
+                    neighbours.Add(grid[checkX, checkY]);
+                }
+            }
+        }
+
+        return neighbours;
+    }
+
+
+    public Node NodeFromWorldPoint(Vector3 worldPosition)
+    {
+        float percentX = (worldPosition.x + gridWorldSize.x / 2) / gridWorldSize.x;
+        float percentY = (worldPosition.z + gridWorldSize.y / 2) / gridWorldSize.y;
+        percentX = Mathf.Clamp01(percentX);
+        percentY = Mathf.Clamp01(percentY);
+
+        int x = Mathf.RoundToInt((gridSizeX - 1) * percentX);
+        int y = Mathf.RoundToInt((gridSizeY - 1) * percentY);
+        return grid[x, y];
+    }
+
+    public List<Node> path;
     void OnDrawGizmos()
     {
-        if (meshVertex != null) {
-            for(int i =0; i<meshVertex.Length; i++) {
-                Gizmos.DrawSphere(meshVertex[i], sphereRadius);
-                if (i == meshVertex.Length - 1) { break; }
-                Gizmos.DrawLine(meshVertex[i], meshVertex[i+1]);
-            }
-        }
+        Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));
 
-        /*
-        if (nodes != null)
+        if (grid != null)
         {
-            foreach (TriangleNode node in nodes)
+            foreach (Node n in grid)
             {
-                Gizmos.color = Color.white;
-                Gizmos.DrawSphere(node.position, 0.1f);
-
-                foreach (TriangleNode neighbor in node.neighbors)
-                {
-                    Gizmos.DrawLine(node.position, neighbor.position)
-                }
+                Gizmos.color = (n.walkable) ? Color.white : Color.red;
+                if (path != null)
+                    if (path.Contains(n))
+                        Gizmos.color = Color.black;
+                Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - .1f));
             }
         }
-        */
     }
-    
+
 
 
 }
