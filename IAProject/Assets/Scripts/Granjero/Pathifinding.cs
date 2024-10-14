@@ -23,13 +23,14 @@ public class Pathfinding : MonoBehaviour {
 
 	//COSAS POR HACER:
 	//poder obtener los nodos inicial y final
-	//poder calcular el coste f de un nodo
+	//poder calcular el coste f de un nodo (para eso necesitamos saber la distancia entre dos nodos)
 	//poder saber los vecinos de un nodo
 	public Transform seeker, target;
 	AIGrid grid;
 
 	void Awake() {
-		grid = GetComponent<Grid> ();
+		grid = GetComponent<AIGrid> ();
+
 	}
 
 	/*void Update() {
@@ -38,8 +39,8 @@ public class Pathfinding : MonoBehaviour {
 
 	void FindPath(Vector3 startPos, Vector3 targetPos) {
 		//Hace falta una forma de obtener los nodos inicial y final sabiendo únicamente los vec3 de esas posiciones.
-		Node startNode; // = ...
-		Node targetNode; // = ...
+		Node startNode = grid.NodeFromWorldPoint(startPos);
+		Node targetNode = grid.NodeFromWorldPoint(targetPos);
 
 		List<Node> openSet = new List<Node>();
 		//HashSet es una colección de elementos únicos sin ordenar
@@ -104,14 +105,14 @@ public class Pathfinding : MonoBehaviour {
 	int GetDistance(Node nodeA, Node nodeB) {
 		//Hay que hacer una función que devuelva la distancia entre 2 nodos
 
-		/*
+		
 		int dstX = Mathf.Abs(nodeA.gridX - nodeB.gridX);
 		int dstY = Mathf.Abs(nodeA.gridY - nodeB.gridY);
 
 		if (dstX > dstY)
 			return 14*dstY + 10* (dstX-dstY);
 		return 14*dstX + 10 * (dstY-dstX);
-		*/
+		
 	}
 
 	//El del video pone esta función dentro del script del grid
@@ -135,4 +136,6 @@ public class Pathfinding : MonoBehaviour {
 		return neighbours;
 	}
 	*/
+
+	
 }

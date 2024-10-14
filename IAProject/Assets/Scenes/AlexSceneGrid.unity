@@ -410,13 +410,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56e8c2e8e7b73a6459d09b1aed82b90e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshVertex: []
-  meshCorners: []
-  gridNodes: []
-  sphereRadius: 5
-  block:
+  unwalkableMask:
     serializedVersion: 2
     m_Bits: 512
+  gridWorldSize: {x: 100, y: 100}
+  nodeRadius: 1
 --- !u!114 &1584745602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -429,13 +427,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56e8c2e8e7b73a6459d09b1aed82b90e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshVertex: []
-  meshCorners: []
-  gridNodes: []
-  sphereRadius: 1
-  block:
+  unwalkableMask:
     serializedVersion: 2
     m_Bits: 0
+  gridWorldSize: {x: 0, y: 0}
+  nodeRadius: 0
 --- !u!64 &1584745603
 MeshCollider:
   m_ObjectHideFlags: 0
