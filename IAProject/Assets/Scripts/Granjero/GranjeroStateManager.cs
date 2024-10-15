@@ -11,7 +11,7 @@ public class GranjeroStateManager : NPC
     // Start is called before the first frame update
     void Start()
     {
-        currentState = PatrullandoState;
+        currentState = PersiguiendoState;
         currentState.EnterState(this);
     }
 
