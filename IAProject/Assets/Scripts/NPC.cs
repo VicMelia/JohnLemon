@@ -7,6 +7,7 @@ public class NPC : MonoBehaviour
     Node currentNode;
     [SerializeField] protected float speed;
     public Pathfinding pathfinding;
+    public bool stop = false;
 
     Vector3[] path;
     [SerializeField] protected Transform target;
@@ -36,6 +37,7 @@ public class NPC : MonoBehaviour
             path = newPath;
             targetIndex = 0;
             StopCoroutine("FollowPath");
+            stop = false;
             StartCoroutine("FollowPath");
         }
     }
@@ -52,6 +54,7 @@ public class NPC : MonoBehaviour
                 targetIndex++;
                 if (targetIndex >= path.Length)
                 {
+                    stop = true;
                     yield break;
                 }
                 currentWaypoint = path[targetIndex];
