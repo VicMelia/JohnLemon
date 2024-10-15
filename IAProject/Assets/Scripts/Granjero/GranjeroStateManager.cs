@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GranjeroStateManager : MonoBehaviour
+public class GranjeroStateManager : NPC
 {
     public GranjeroBaseState currentState;
     public GranjeroPatrullandoState PatrullandoState = new GranjeroPatrullandoState();

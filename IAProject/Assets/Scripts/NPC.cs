@@ -17,6 +17,12 @@ public class NPC : MonoBehaviour
         pathfinding = GetComponent<Pathfinding>();
     }
 
+    public void GoTo(Transform place)
+    {
+        target = place;
+        GoToTarget();
+    }
+
     protected void GoToTarget()
     {
         pathfinding.FindPath(this.transform.position, target.transform.position);
