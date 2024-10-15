@@ -25,7 +25,7 @@ public class Pathfinding : MonoBehaviour {
 	//poder obtener los nodos inicial y final
 	//poder calcular el coste f de un nodo (para eso necesitamos saber la distancia entre dos nodos)
 	//poder saber los vecinos de un nodo
-	public Transform seeker, target;
+	public Transform target;
 	public AIGrid grid;
 
 	public Vector3[] vectorPath;

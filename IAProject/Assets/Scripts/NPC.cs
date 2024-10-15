@@ -5,7 +5,7 @@ using UnityEngine;
 public class NPC : MonoBehaviour
 {
     Node currentNode;
-    float speed;
+    [SerializeField] protected float speed;
     public Pathfinding pathfinding;
 
     Vector3[] path;
@@ -41,8 +41,10 @@ public class NPC : MonoBehaviour
         Vector3 currentWaypoint = path[0];
         while (true)
         {
+            Debug.Log (currentWaypoint);
             if (transform.position == currentWaypoint)
             {
+                Debug.Log("Cambiando waypoint");
                 targetIndex++;
                 if (targetIndex >= path.Length)
                 {
