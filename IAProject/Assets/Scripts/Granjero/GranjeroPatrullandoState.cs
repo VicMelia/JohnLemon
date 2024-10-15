@@ -8,7 +8,7 @@ public class GranjeroPatrullandoState : GranjeroBaseState
     private bool searching;
 
     public override void EnterState(GranjeroStateManager granjero){
-        routePoints = GameObject.FindGameObjectsWithTag("Route");
+        
     }
     public override void UpdateState(GranjeroStateManager granjero){
         if (!searching)
@@ -26,11 +26,8 @@ public class GranjeroPatrullandoState : GranjeroBaseState
 
     private Transform GetRandomRoutePoint()
     {
-        for (int i = 0; i < Random.Range(0, routePoints.Length); i++)
-        {
-            return routePoints[i].transform;
-        }
-        return routePoints[0].transform;
+        routePoints= routePoints = GameObject.FindGameObjectsWithTag("Route");
+        return routePoints[Random.Range(0, routePoints.Length)].transform;
     }
 
 }

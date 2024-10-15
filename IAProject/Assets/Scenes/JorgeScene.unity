@@ -1123,7 +1123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e5b4cb54bbe78a43810e413927a5b0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 10
   pathfinding: {fileID: 1249056899}
   stop: 0
   target: {fileID: 0}
