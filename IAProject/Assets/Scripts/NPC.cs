@@ -8,8 +8,8 @@ public class NPC : MonoBehaviour
     float speed;
     public Pathfinding pathfinding;
 
-    public Transform target;
-    Vector3 path;
+    Vector3[] path;
+    [SerializeField] protected Transform target;
     int targetIndex;
 
     private void Start()
@@ -17,16 +17,19 @@ public class NPC : MonoBehaviour
         pathfinding = GetComponent<Pathfinding>();
     }
 
-    private void GoTo(Vector3 newPosition)
+    protected void GoToTarget()
     {
-
+        pathfinding.FindPath(this.transform.position, target.transform.position);
+        OnPathFound(pathfinding.vectorPath,true);
     }
 
-    public void OnPathFound(Vector3[] newPath, bool pathSuccessful)
+    protected void OnPathFound(Vector3[] newPath, bool pathSuccessful)
     {
         if (pathSuccessful)
         {
+            //Debug.Log("pathsuccesful");
             path = newPath;
+            //Debug.Log(path[0]);
             targetIndex = 0;
             StopCoroutine("FollowPath");
             StartCoroutine("FollowPath");

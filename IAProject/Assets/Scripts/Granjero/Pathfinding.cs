@@ -26,18 +26,12 @@ public class Pathfinding : MonoBehaviour {
 	//poder calcular el coste f de un nodo (para eso necesitamos saber la distancia entre dos nodos)
 	//poder saber los vecinos de un nodo
 	public Transform seeker, target;
-	AIGrid grid;
+	public AIGrid grid;
 
-	void Awake() {
-		grid = GetComponent<AIGrid> ();
+	public Vector3[] vectorPath;
 
-	}
 
-	/*void Update() {
-		FindPath (seeker.position, target.position);
-	}*/
-
-	void FindPath(Vector3 startPos, Vector3 targetPos) {
+	public void FindPath(Vector3 startPos, Vector3 targetPos) {
 		//Hace falta una forma de obtener los nodos inicial y final sabiendo únicamente los vec3 de esas posiciones.
 		Node startNode = grid.NodeFromWorldPoint(startPos);
 		Node targetNode = grid.NodeFromWorldPoint(targetPos);
@@ -91,14 +85,13 @@ public class Pathfinding : MonoBehaviour {
 	void RetracePath(Node startNode, Node endNode) {
 		List<Node> path = new List<Node>();
 		Node currentNode = endNode;
-
 		while (currentNode != startNode) {
 			path.Add(currentNode);
 			currentNode = currentNode.parent;
 		}
 		path.Reverse();
-
-		grid.path = path;
+		GetVectorPath(path);
+		return;
 
 	}
 
@@ -114,6 +107,15 @@ public class Pathfinding : MonoBehaviour {
 		return 14*dstX + 10 * (dstY-dstX);
 		
 	}
+
+	void GetVectorPath(List<Node> nodeList){
+		Debug.Log(nodeList.Count);
+		vectorPath = new Vector3[nodeList.Count];
+		for(int i = 0; i<nodeList.Count-1;i++){
+			vectorPath[i] = nodeList[i].worldPosition;
+		}
+		return;
+	 }
 
 	//El del video pone esta función dentro del script del grid
 	/*public List<Node> GetNeighbours(Node node) {
