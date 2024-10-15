@@ -8,9 +8,10 @@ public class NPC : MonoBehaviour
     [SerializeField] protected float speed;
     public Pathfinding pathfinding;
     public bool stop = false;
+    public float distance;
 
     Vector3[] path;
-    [SerializeField] protected Transform target;
+    public Transform target;
     int targetIndex;
 
     private void Start()
@@ -59,7 +60,7 @@ public class NPC : MonoBehaviour
                 }
                 currentWaypoint = path[targetIndex];
             }
-
+                distance = Vector3.Distance (this.transform.position, target.transform.position);
             transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
             yield return null;
 
