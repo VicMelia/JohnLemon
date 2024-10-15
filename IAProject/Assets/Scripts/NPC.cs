@@ -27,9 +27,7 @@ public class NPC : MonoBehaviour
     {
         if (pathSuccessful)
         {
-            //Debug.Log("pathsuccesful");
             path = newPath;
-            //Debug.Log(path[0]);
             targetIndex = 0;
             StopCoroutine("FollowPath");
             StartCoroutine("FollowPath");
