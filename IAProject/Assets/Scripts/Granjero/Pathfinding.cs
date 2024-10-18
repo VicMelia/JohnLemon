@@ -109,7 +109,7 @@ public class Pathfinding : MonoBehaviour {
 	}
 
 	void GetVectorPath(List<Node> nodeList){
-		Debug.Log(nodeList.Count);
+		//Debug.Log(nodeList.Count);
 		vectorPath = new Vector3[nodeList.Count];
 		for(int i = 0; i<nodeList.Count-1;i++){
 			vectorPath[i] = nodeList[i].worldPosition;

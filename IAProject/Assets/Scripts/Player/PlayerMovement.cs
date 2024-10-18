@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
         Active, Interacting, Hidden, Leaving
     }
 
-    private Status status;
+    public Status status;
 
     
 
