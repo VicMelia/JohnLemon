@@ -8,9 +8,9 @@ public class PlayerMovement : MonoBehaviour
 
     //Base movement
     public float turnSpeed = 20f;
-    public float moveSpeed = 5f; // Speed at which the player moves
+    public float moveSpeed = 3f; // Speed at which the player moves
 
-    public float runSpeed = 7f; // Sprint speed
+    public float runSpeed = 5f; // Sprint speed
 
     private float currentSpeed; //Final speed (normal or sprint)
     private Rigidbody m_Rigidbody;
@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
 
     private float actualRadius;
 
-    private float soundSpeed = 6f; //Sound radius increases/decreases over time
+    private float soundSpeed = 10f; //Sound radius increases/decreases over time
 
     //Interaction
     private Transform holeTarget;
@@ -135,6 +135,7 @@ public class PlayerMovement : MonoBehaviour
         if(holeTarget!= null){
             float d = Vector3.Distance(transform.position,holeTarget.position);
             if(d < 5f && grounded && Input.GetKey(KeyCode.E) && holeTarget != null){ //Jumps to the hole
+            holeTarget.GetChild(0).GetComponent<MeshCollider>().enabled = false;
             status = Status.Interacting;
             float jumpBoost = 1.5f;
             lastPosition = transform.position;
@@ -148,6 +149,8 @@ public class PlayerMovement : MonoBehaviour
 
     void InteractingMovement(){ //Jumping to the hole (move plus rotation)
 
+
+        holeTarget.position = new Vector3(holeTarget.position.x, holeTarget.position.y, holeTarget.position.z);
         Vector3 targetDirection = holeTarget.position - transform.position;
         float singleStep = 5f * Time.deltaTime;
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
@@ -158,7 +161,7 @@ public class PlayerMovement : MonoBehaviour
         if(d < 0.1f){
             status = Status.Hidden;
             m_MeshRenderer.enabled = false;
-            transform.GetChild(0).gameObject.SetActive(false);
+            //transform.GetChild(0).gameObject.SetActive(false);
                 
         }
     }
@@ -166,9 +169,10 @@ public class PlayerMovement : MonoBehaviour
     void HiddenMovement(){ //Hidden movement (zero)
 
         if(Input.GetKey(KeyCode.E)){ //Exits from the hole
+            
             status = Status.Leaving;
             m_MeshRenderer.enabled=true;
-            transform.GetChild(0).gameObject.SetActive(true);
+            //transform.GetChild(0).gameObject.SetActive(true);
             //transform.forward = holeTarget.forward;
             Vector3 newDir = lastPosition - transform.position;
             transform.forward = newDir;
@@ -185,6 +189,7 @@ public class PlayerMovement : MonoBehaviour
             //holeTarget = null;
             lastPosition = Vector3.zero;
             status = Status.Active;
+            holeTarget.GetChild(0).GetComponent<MeshCollider>().enabled = true;
             
         }
     }
