@@ -9,6 +9,8 @@ public class GranjeroStateManager : NPC
     public GranjeroPersiguiendoState PersiguiendoState = new GranjeroPersiguiendoState();
     public string routeTag = "";
     public ConoVision vision;
+    public int tiempoPerdido;
+
 
     // Start is called before the first frame update
     void Start()

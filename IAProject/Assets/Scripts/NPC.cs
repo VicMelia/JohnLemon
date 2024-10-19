@@ -13,6 +13,7 @@ public class NPC : MonoBehaviour
     Vector3[] path;
     public Transform target;
     int targetIndex;
+    
 
     private Vector3 targetDirectionforRotation;
     public float rSpeed;
@@ -67,11 +68,12 @@ public class NPC : MonoBehaviour
             }
             distance = Vector3.Distance (this.transform.position, target.transform.position);
             transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
-            
-            targetDirectionforRotation = target.transform.position - transform.position;
+
+            targetDirectionforRotation = currentWaypoint - transform.position;
             step = rSpeed * Time.deltaTime;
             rotation = Vector3.RotateTowards(transform.forward, targetDirectionforRotation, step, 0.0f);
             transform.rotation = Quaternion.LookRotation(rotation);
+            transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
             yield return null;
 
         }

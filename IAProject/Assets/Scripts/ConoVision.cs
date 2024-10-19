@@ -151,7 +151,7 @@ public class ConoVision : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.tag == tagTriggeadora) {playerDetected = true; }
         else
@@ -159,6 +159,10 @@ public class ConoVision : MonoBehaviour
             playerDetected = false;
         }
     }
+
+    /*private void OnTriggerExit( Collider other){
+        if (other.tag == tagTriggeadora) {playerDetected = false; }
+    }*/
 
 
 

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2433886937210890224}
   m_Layer: 0
   m_Name: Granjero
-  m_TagString: Untagged
+  m_TagString: Granjero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,8 +144,10 @@ MonoBehaviour:
   player: {fileID: 0}
   height: 0
   target: {fileID: 0}
-  rSpeed: 1
-  routeTag: 
+  rSpeed: 3
+  routeTag: Route3
+  vision: {fileID: 0}
+  tiempoPerdido: 0
 --- !u!1 &1395401282477341069
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,13 +174,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1395401282477341069}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.03925978, y: 0, z: 0, w: 0.9992291}
-  m_LocalPosition: {x: 0, y: 0.635, z: 0.608}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.229, z: 0.608}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6257499388564848678}
-  m_LocalEulerAnglesHint: {x: 4.5, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6734848258250229052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,8 +194,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   VisionConeMaterial: {fileID: 2100000, guid: 702766f57014344419d2c60b2e45adc9, type: 2}
-  VisionRange: 10
-  VisionAngle: 150
+  VisionRange: 30
+  VisionAngle: 80
   VisionObstructingLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -202,6 +204,7 @@ MonoBehaviour:
     m_Bits: 1024
   tagTriggeadora: Player
   VisionConeResolution: 120
+  playerDetected: 0
 --- !u!64 &1893217609630032111
 MeshCollider:
   m_ObjectHideFlags: 0

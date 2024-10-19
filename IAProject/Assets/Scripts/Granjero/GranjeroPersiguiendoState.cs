@@ -5,17 +5,21 @@ using UnityEngine;
 public class GranjeroPersiguiendoState : GranjeroBaseState
 {
     private float margin;
-    private bool lost;
+    //private bool lost;
     private PlayerMovement pMv;
+    private float timer;
+   // private ConoVision cv;
 
     public override void EnterState(GranjeroStateManager granjero){
+        granjero.tiempoPerdido = 5;
         //Aquí tienen que pasar cosas
         Debug.Log("patata");
-        granjero.GoTo(granjero.target);
+        granjero.GoTo(granjero.player.transform);
         //distance = Vector3.Distance (this.transform.position, granjero.target.transform.position);
         margin = 2;
-        lost = false;
         pMv = granjero.player.GetComponent<PlayerMovement>();
+        //cv = granjero.vision;
+        timer = 0;
 
     }
     public override void UpdateState(GranjeroStateManager granjero){
@@ -29,12 +33,16 @@ public class GranjeroPersiguiendoState : GranjeroBaseState
             //Jugador pierde
             granjero.StopCoroutine("FollowPath");
         }
-        else if (lost == true){
-
+        else if (!granjero.vision.playerDetected){
+            timer += Time.deltaTime;
+            if (timer > granjero.tiempoPerdido){
+                granjero.SwitchState(granjero.PatrullandoState);
+            }
         }
 
-        else if (granjero.distance >= margin  && lost == false){
-            granjero.GoTo(granjero.target);
+        else if (granjero.distance >= margin  && granjero.vision.playerDetected){
+            timer = 0;
+            granjero.GoTo(granjero.player.transform);
         }
     }
 }

@@ -22,7 +22,8 @@ public class GranjeroPatrullandoState : GranjeroBaseState
 
         if (granjero.vision.playerDetected)
         {
-            CallFarmers(10,granjero);
+            Debug.Log("GWEIAYFGAWIFUWGEAIYWWAYGI");
+            CallFarmers(999,granjero);
             granjero.SwitchState(granjero.PersiguiendoState);
         }
 
