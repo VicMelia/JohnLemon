@@ -18,8 +18,11 @@ public class GranjeroPatrullandoState : GranjeroBaseState
             //granjero.StopCoroutine("FollowPath");
             granjero.GoTo(GetRandomRoutePoint(granjero));
         }
-        
 
+        if (granjero.vision.playerDetected)
+        {
+            granjero.SwitchState(granjero.PersiguiendoState);
+        }
        
 
     }
