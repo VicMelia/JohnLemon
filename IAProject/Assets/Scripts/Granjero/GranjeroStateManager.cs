@@ -7,6 +7,7 @@ public class GranjeroStateManager : NPC
     public GranjeroBaseState currentState;
     public GranjeroPatrullandoState PatrullandoState = new GranjeroPatrullandoState();
     public GranjeroPersiguiendoState PersiguiendoState = new GranjeroPersiguiendoState();
+    public string routeTag = "";
 
     // Start is called before the first frame update
     void Start()
