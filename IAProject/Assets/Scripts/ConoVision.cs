@@ -8,7 +8,7 @@ using UnityEngine;
 
 
 
-public class VisionCone : MonoBehaviour
+public class ConoVision : MonoBehaviour
 
 {
 

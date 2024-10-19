@@ -8,12 +8,14 @@ public class GranjeroStateManager : NPC
     public GranjeroPatrullandoState PatrullandoState = new GranjeroPatrullandoState();
     public GranjeroPersiguiendoState PersiguiendoState = new GranjeroPersiguiendoState();
     public string routeTag = "";
+    public ConoVision vision;
 
     // Start is called before the first frame update
     void Start()
     {
         currentState = PatrullandoState;
         currentState.EnterState(this);
+        vision= transform.GetChild(0).GetComponent<ConoVision>();
     }
 
     // Update is called once per frame
