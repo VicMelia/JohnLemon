@@ -65,7 +65,7 @@ public class NPC : MonoBehaviour
                 targetIndex++;
                 if (targetIndex >= path.Length)
                 {
-                    stop = true;
+                    //stop = true;
                     yield break;
                 }
                 currentWaypoint = path[targetIndex];
