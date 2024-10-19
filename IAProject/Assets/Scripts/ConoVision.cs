@@ -33,6 +33,8 @@ public class VisionCone : MonoBehaviour
 
     //for the ones that you dont understand dont worry, just follow along
 
+    public bool playerDetected = false;
+
     void Start()
 
     {
@@ -151,7 +153,11 @@ public class VisionCone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-       // if (other.tag == tagTriggeadora) Debug.Log ("jpaefuow");
+        if (other.tag == tagTriggeadora) {playerDetected = true; }
+        else
+        {
+            playerDetected = false;
+        }
     }
 
 

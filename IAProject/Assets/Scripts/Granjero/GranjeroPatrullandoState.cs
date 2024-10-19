@@ -13,7 +13,7 @@ public class GranjeroPatrullandoState : GranjeroBaseState
     }
     public override void UpdateState(GranjeroStateManager granjero){
         
-        if (granjero.distance <= 3f)
+        if (granjero.distance <= 5f)
         {
             //granjero.StopCoroutine("FollowPath");
             granjero.GoTo(GetRandomRoutePoint(granjero));
