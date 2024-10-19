@@ -56,10 +56,8 @@ public class NPC : MonoBehaviour
         currentWaypoint.y = height;
         while (true)
         {
-            //Debug.Log (currentWaypoint);
             if (transform.position == currentWaypoint)
             {
-                //Debug.Log("Cambiando waypoint");
                 targetIndex++;
                 if (targetIndex >= path.Length)
                 {

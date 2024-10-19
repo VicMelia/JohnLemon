@@ -151,7 +151,7 @@ public class VisionCone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == tagTriggeadora) Debug.Log ("jpaefuow");
+       // if (other.tag == tagTriggeadora) Debug.Log ("jpaefuow");
     }
 
 

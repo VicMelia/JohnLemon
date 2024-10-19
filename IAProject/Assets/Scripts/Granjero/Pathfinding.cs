@@ -90,6 +90,7 @@ public class Pathfinding : MonoBehaviour {
 			currentNode = currentNode.parent;
 		}
 		path.Reverse();
+		//Debug.Log("AAAAAAAAAAAAAA: "+ path[path.Count-1].worldPosition);
 		GetVectorPath(path);
 		return;
 
@@ -109,11 +110,11 @@ public class Pathfinding : MonoBehaviour {
 	}
 
 	void GetVectorPath(List<Node> nodeList){
-		//Debug.Log(nodeList.Count);
-		vectorPath = new Vector3[nodeList.Count];
+		vectorPath = new Vector3[nodeList.Count-1];
 		for(int i = 0; i<nodeList.Count-1;i++){
 			vectorPath[i] = nodeList[i].worldPosition;
 		}
+
 		return;
 	 }
 

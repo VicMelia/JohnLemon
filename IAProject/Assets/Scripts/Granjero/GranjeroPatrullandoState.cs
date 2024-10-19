@@ -13,11 +13,12 @@ public class GranjeroPatrullandoState : GranjeroBaseState
     }
     public override void UpdateState(GranjeroStateManager granjero){
         
-        if (granjero.distance <= 1f)
+        if (granjero.distance <= 3f)
         {
             //granjero.StopCoroutine("FollowPath");
             granjero.GoTo(GetRandomRoutePoint(granjero));
         }
+        
 
        
 
@@ -25,7 +26,7 @@ public class GranjeroPatrullandoState : GranjeroBaseState
 
     private Transform GetRandomRoutePoint(GranjeroStateManager granjero)
     {
-        routePoints= routePoints = GameObject.FindGameObjectsWithTag(granjero.routeTag);
+        routePoints = GameObject.FindGameObjectsWithTag(granjero.routeTag);
         return routePoints[Random.Range(0, routePoints.Length)].transform;
     }
 
