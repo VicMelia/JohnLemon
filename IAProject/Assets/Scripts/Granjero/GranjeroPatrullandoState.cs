@@ -21,11 +21,26 @@ public class GranjeroPatrullandoState : GranjeroBaseState
 
         if (granjero.vision.playerDetected)
         {
+            CallFarmers(10,granjero);
             granjero.SwitchState(granjero.PersiguiendoState);
         }
+
        
 
     }
+
+    private void CallFarmers(float radius,GranjeroStateManager granjero)
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(granjero.transform.position, radius);
+        foreach (var hitCollider in hitColliders)
+        {
+            if (hitCollider.gameObject.tag=="Granjero")
+            {
+                hitCollider.GetComponent<GranjeroStateManager>().RecieveCall();
+            }
+        }
+    }
+    
 
     private Transform GetRandomRoutePoint(GranjeroStateManager granjero)
     {

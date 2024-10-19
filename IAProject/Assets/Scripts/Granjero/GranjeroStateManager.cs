@@ -28,4 +28,10 @@ public class GranjeroStateManager : NPC
         currentState = state;
         state.EnterState(this);
     }
+
+    public void RecieveCall()
+    {
+        SwitchState(PersiguiendoState);
+    }
+
 }
