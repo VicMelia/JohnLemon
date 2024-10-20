@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
     int state = -1;
-    int selLevel = -1;
-    GameObject[] levels;
     int liveChickens = 0;
     bool caught = false;
     bool victory = false;
 
-    void Start() {}
+    void Start() {
+        time.timescale = 1;
+    }
 
     void Update() {
 
@@ -33,24 +33,24 @@ public class GameManager : MonoBehaviour {
     }
 
     void startGame() {
-        selLevel = 0;
-        levels[selLevel].SetActive(true);
     }
 
-    void runGame() {}
+    void runGame() {
+        
+    }
 
     void endGame() {
-        levels[selLevel].SetActive(false);
-
-        if (selLevel < levels.Length - 1 && victory) {
-            selLevel++;
-            victory = false;
-            levels[selLevel].SetActive(true);
-            state = 1;
+        Time.timescale = 0;
+        if (victory) {
+            //mostrar cartel de victoria
+            
+            /*victory = false;
+            state = 1;*/
         }
         else {
-            victory = false;
-            state = -1;
+            //mostrar cartel de derrota
+            /*victory = false;
+            state = -1;*/
         }
     }
 }
