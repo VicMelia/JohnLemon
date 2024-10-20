@@ -10,6 +10,7 @@ public class GranjeroStateManager : NPC
     public string routeTag = "";
     public ConoVision vision;
     public int tiempoPerdido;
+    public float callOthersRange = 10;
 
 
     // Start is called before the first frame update

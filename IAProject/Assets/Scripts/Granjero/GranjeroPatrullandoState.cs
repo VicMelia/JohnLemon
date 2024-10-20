@@ -14,7 +14,7 @@ public class GranjeroPatrullandoState : GranjeroBaseState
     }
     public override void UpdateState(GranjeroStateManager granjero){
         
-        if (granjero.distance <= 5f)
+        if (granjero.distance <= 4f)
         {
             //granjero.StopCoroutine("FollowPath");
             granjero.GoTo(GetRandomRoutePoint(granjero));
@@ -23,7 +23,7 @@ public class GranjeroPatrullandoState : GranjeroBaseState
         if (granjero.vision.playerDetected)
         {
             Debug.Log("GWEIAYFGAWIFUWGEAIYWWAYGI");
-            CallFarmers(999,granjero);
+            CallFarmers(granjero.callOthersRange, granjero);
             granjero.SwitchState(granjero.PersiguiendoState);
         }
 

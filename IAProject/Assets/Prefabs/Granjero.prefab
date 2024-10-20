@@ -146,8 +146,8 @@ MonoBehaviour:
   target: {fileID: 0}
   rSpeed: 3
   routeTag: Route3
-  vision: {fileID: 0}
-  tiempoPerdido: 0
+  vision: {fileID: 6734848258250229052}
+  tiempoPerdido: 2
 --- !u!1 &1395401282477341069
 GameObject:
   m_ObjectHideFlags: 0

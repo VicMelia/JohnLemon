@@ -2440,11 +2440,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Granjero (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 14768778024544332, guid: 1b0d3bb8ca48b4049aa85aa77802660b,
-        type: 3}
-      propertyPath: m_TagString
-      value: Granjero
-      objectReference: {fileID: 0}
     - target: {fileID: 2433886937210890224, guid: 1b0d3bb8ca48b4049aa85aa77802660b,
         type: 3}
       propertyPath: player
@@ -2455,11 +2450,6 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1344235428}
-    - target: {fileID: 2433886937210890224, guid: 1b0d3bb8ca48b4049aa85aa77802660b,
-        type: 3}
-      propertyPath: routeTag
-      value: Route3
-      objectReference: {fileID: 0}
     - target: {fileID: 6257499388564848678, guid: 1b0d3bb8ca48b4049aa85aa77802660b,
         type: 3}
       propertyPath: m_LocalPosition.x

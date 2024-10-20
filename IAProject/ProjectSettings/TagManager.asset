@@ -5,10 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Hole
+  - Granjero
+  - Route1
   - Route2
   - Route3
-  - Route 1
-  - Granjero
+  - Route4
+  - Route5
   layers:
   - Default
   - TransparentFX
