@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3508662451652774707}
   - component: {fileID: 7852786821421344981}
   - component: {fileID: 8215800628776520998}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Hay_Bale
   m_TagString: Untagged
   m_Icon: {fileID: 0}
