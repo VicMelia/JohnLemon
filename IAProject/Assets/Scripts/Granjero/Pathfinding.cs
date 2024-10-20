@@ -35,7 +35,12 @@ public class Pathfinding : MonoBehaviour {
 		//Hace falta una forma de obtener los nodos inicial y final sabiendo únicamente los vec3 de esas posiciones.
 		Node startNode = grid.NodeFromWorldPoint(startPos);
 		Node targetNode = grid.NodeFromWorldPoint(targetPos);
-
+		
+		if (!targetNode.walkable){
+			while (!targetNode.walkable){
+				targetNode = grid.GetNeighbours(targetNode)[0];
+			}
+		}
 		List<Node> openSet = new List<Node>();
 		//HashSet es una colección de elementos únicos sin ordenar
 		HashSet<Node> closedSet = new HashSet<Node>();
