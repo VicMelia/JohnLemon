@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour {
     bool victory = false;
 
     void Start() {
-        time.timescale = 1;
+        Time.timeScale = 1;
     }
 
     void Update() {
@@ -36,11 +36,11 @@ public class GameManager : MonoBehaviour {
     }
 
     void runGame() {
-        
+
     }
 
     void endGame() {
-        Time.timescale = 0;
+        Time.timeScale = 0;
         if (victory) {
             //mostrar cartel de victoria
             
