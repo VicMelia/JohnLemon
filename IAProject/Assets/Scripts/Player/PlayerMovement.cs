@@ -135,7 +135,7 @@ public class PlayerMovement : MonoBehaviour
         if(holeTarget!= null){
             float d = Vector3.Distance(transform.position,holeTarget.position);
             if(d < 5f && grounded && Input.GetKey(KeyCode.E) && holeTarget != null){ //Jumps to the hole
-            holeTarget.GetChild(0).GetComponent<MeshCollider>().enabled = false;
+            holeTarget.GetChild(0).GetComponent<BoxCollider>().enabled = false;
             status = Status.Interacting;
             float jumpBoost = 1.5f;
             lastPosition = transform.position;
@@ -189,7 +189,7 @@ public class PlayerMovement : MonoBehaviour
             //holeTarget = null;
             lastPosition = Vector3.zero;
             status = Status.Active;
-            holeTarget.GetChild(0).GetComponent<MeshCollider>().enabled = true;
+            holeTarget.GetChild(0).GetComponent<BoxCollider>().enabled = true;
             
         }
     }
