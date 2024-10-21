@@ -15,6 +15,7 @@ public class Menu : MonoBehaviour
     }
     public void EndGame()
     {
+        Debug.Log("llendo al ppal");
         SceneManager.LoadScene(0);
     }
 

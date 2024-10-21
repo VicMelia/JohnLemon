@@ -3347,6 +3347,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gallina3
       objectReference: {fileID: 0}
+    - target: {fileID: 1206511787925574, guid: 6e18a7523fe6d18408df60782488b177, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4309743995697292, guid: 6e18a7523fe6d18408df60782488b177, type: 3}
       propertyPath: m_LocalPosition.x
       value: 39.69
@@ -29443,6 +29447,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gallina
       objectReference: {fileID: 0}
+    - target: {fileID: 1206511787925574, guid: 6e18a7523fe6d18408df60782488b177, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4309743995697292, guid: 6e18a7523fe6d18408df60782488b177, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.103913
@@ -30042,6 +30050,10 @@ PrefabInstance:
     - target: {fileID: 1206511787925574, guid: 6e18a7523fe6d18408df60782488b177, type: 3}
       propertyPath: m_Name
       value: Gallina2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206511787925574, guid: 6e18a7523fe6d18408df60782488b177, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4309743995697292, guid: 6e18a7523fe6d18408df60782488b177, type: 3}
       propertyPath: m_LocalPosition.x
@@ -36308,6 +36320,10 @@ PrefabInstance:
     - target: {fileID: 1206511787925574, guid: 6e18a7523fe6d18408df60782488b177, type: 3}
       propertyPath: m_Name
       value: Gallina4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206511787925574, guid: 6e18a7523fe6d18408df60782488b177, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4309743995697292, guid: 6e18a7523fe6d18408df60782488b177, type: 3}
       propertyPath: m_LocalPosition.x
