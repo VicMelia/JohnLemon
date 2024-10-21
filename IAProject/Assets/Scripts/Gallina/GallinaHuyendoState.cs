@@ -12,7 +12,7 @@ public class GallinaHuyendoState : GallinaBaseState {
 
     public override void UpdateState(GallinaStateManager gallina) {
 
-        if (gallina.transform == destination) { gallina.SwitchState(gallina.PululandoState); }
+        if (gallina.transform == destination) { gallina.SwitchState(gallina.PululandoState); Debug.Log("Ya estoy a salvo"); }
     }
 
     private void ScreamAndFlee(float radius, GallinaStateManager gallina) {
