@@ -19,7 +19,6 @@ public class ConoVision : MonoBehaviour
     public float VisionAngle;
 
     public LayerMask VisionObstructingLayer;//layer with objects that obstruct the enemy view, like walls, for example
-    public LayerMask PlayerLayer;
     public string tagTriggeadora;
 
     public int VisionConeResolution = 120;//the vision cone will be made up of triangles, the higher this value is the pretier the vision cone will be

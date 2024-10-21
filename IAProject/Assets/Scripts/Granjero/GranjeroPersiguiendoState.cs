@@ -8,10 +8,12 @@ public class GranjeroPersiguiendoState : GranjeroBaseState
     //private bool lost;
     private PlayerMovement pMv;
     private float timer;
+    private GameManager gM; 
    // private ConoVision cv;
 
     public override void EnterState(GranjeroStateManager granjero){
         granjero.tiempoPerdido = 5;
+        gM = GameObject.Find("GameManager").GetComponent<GameManager>();
         //Aquí tienen que pasar cosas
         Debug.Log("patata");
         granjero.GoTo(granjero.player.transform);
@@ -32,6 +34,8 @@ public class GranjeroPersiguiendoState : GranjeroBaseState
         if (granjero.distance < margin) {
             //Jugador pierde
             granjero.StopCoroutine("FollowPath");
+            GameManager.Instance.caught = true;
+            GameManager.Instance.statCheck();
         }
         else if (!granjero.vision.playerDetected){
             timer += Time.deltaTime;

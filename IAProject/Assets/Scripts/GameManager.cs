@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour {
             case 1: runGame(); break;
             case 2: endGame(); break;
         }
+        statCheck();
     }
 
     public void statCheck() {
