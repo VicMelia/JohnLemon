@@ -20,11 +20,11 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
-  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
-  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
+  m_AmbientSkyColor: {r: 0.17097138, g: 0.06710574, b: 0.49056602, a: 1}
+  m_AmbientEquatorColor: {r: 0.1460482, g: 0.110137075, b: 0.31132078, a: 1}
+  m_AmbientGroundColor: {r: 0.07352704, g: 0.063056245, b: 0.122641504, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 1
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
@@ -2905,8 +2905,8 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0.1516554, g: 0.24714983, b: 0.4528302, a: 1}
+  m_Intensity: 0.87
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -2915,7 +2915,7 @@ Light:
     m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 0.442
+    m_Strength: 1
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -2948,7 +2948,7 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 1.21
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
@@ -26761,6 +26761,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1507208512}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &1509220045 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1520580213928268748, guid: 610e2714f26ebc743a5e11227fc06def,
+    type: 3}
+  m_PrefabInstance: {fileID: 4640107273204262285}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1511992965
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33931,7 +33937,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1875604904
 Transform:
   m_ObjectHideFlags: 0
@@ -38963,6 +38969,11 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5692403853805015806, guid: 610e2714f26ebc743a5e11227fc06def,
+        type: 3}
+      propertyPath: m_MeshRenderer
+      value: 
+      objectReference: {fileID: 1509220045}
     - target: {fileID: 8606911614005952322, guid: 610e2714f26ebc743a5e11227fc06def,
         type: 3}
       propertyPath: m_Name
@@ -38976,7 +38987,7 @@ PrefabInstance:
     - target: {fileID: 9148875848759950641, guid: 610e2714f26ebc743a5e11227fc06def,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9221889330476041316, guid: 610e2714f26ebc743a5e11227fc06def,
         type: 3}

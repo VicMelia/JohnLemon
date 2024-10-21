@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
     private Transform holeTarget;
     public Transform gallinaTarget;
 
-    private MeshRenderer m_MeshRenderer;
+    [SerializeField] private MeshRenderer m_MeshRenderer;
 
     private Vector3 lastPosition;
 
@@ -62,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
-        m_MeshRenderer = GetComponent<MeshRenderer>();
+        //m_MeshRenderer = GetComponent<MeshRenderer>();
         InitializeVariables();
     }
 
