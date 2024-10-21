@@ -3244,7 +3244,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1206511787925574, guid: 6e18a7523fe6d18408df60782488b177, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4309743995697292, guid: 6e18a7523fe6d18408df60782488b177, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6221,6 +6221,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Granjero4
       objectReference: {fileID: 0}
+    - target: {fileID: 14768778024544332, guid: 1b0d3bb8ca48b4049aa85aa77802660b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2433886937210890224, guid: 1b0d3bb8ca48b4049aa85aa77802660b,
         type: 3}
       propertyPath: speed
@@ -8802,6 +8807,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Granjero5
       objectReference: {fileID: 0}
+    - target: {fileID: 14768778024544332, guid: 1b0d3bb8ca48b4049aa85aa77802660b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2433886937210890224, guid: 1b0d3bb8ca48b4049aa85aa77802660b,
         type: 3}
       propertyPath: speed
@@ -10058,6 +10068,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Granjero1
+      objectReference: {fileID: 0}
+    - target: {fileID: 14768778024544332, guid: 1b0d3bb8ca48b4049aa85aa77802660b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2433886937210890224, guid: 1b0d3bb8ca48b4049aa85aa77802660b,
         type: 3}
@@ -18355,6 +18370,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Granjero3
+      objectReference: {fileID: 0}
+    - target: {fileID: 14768778024544332, guid: 1b0d3bb8ca48b4049aa85aa77802660b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2433886937210890224, guid: 1b0d3bb8ca48b4049aa85aa77802660b,
         type: 3}
@@ -29369,7 +29389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1206511787925574, guid: 6e18a7523fe6d18408df60782488b177, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4309743995697292, guid: 6e18a7523fe6d18408df60782488b177, type: 3}
       propertyPath: m_LocalPosition.x
@@ -29973,7 +29993,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1206511787925574, guid: 6e18a7523fe6d18408df60782488b177, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4309743995697292, guid: 6e18a7523fe6d18408df60782488b177, type: 3}
       propertyPath: m_LocalPosition.x
@@ -31584,6 +31604,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Granjero2
+      objectReference: {fileID: 0}
+    - target: {fileID: 14768778024544332, guid: 1b0d3bb8ca48b4049aa85aa77802660b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2433886937210890224, guid: 1b0d3bb8ca48b4049aa85aa77802660b,
         type: 3}
@@ -36248,7 +36273,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1206511787925574, guid: 6e18a7523fe6d18408df60782488b177, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4309743995697292, guid: 6e18a7523fe6d18408df60782488b177, type: 3}
       propertyPath: m_LocalPosition.x

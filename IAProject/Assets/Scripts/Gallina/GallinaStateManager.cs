@@ -8,6 +8,7 @@ public class GallinaStateManager : NPC {
     public GallinaPululandoState PululandoState = new GallinaPululandoState();
     public GallinaHuyendoState HuyendoState = new GallinaHuyendoState();
     public ConoVision vision;
+    public List<GameObject> escapePoints = new List<GameObject>();
 
     void Start() {
 
