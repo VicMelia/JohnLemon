@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 lastPosition;
 
-    private bool canKill;
+    //private bool canKill;
 
     public enum Status { //State machine
         Active, Interacting, Hidden, Leaving, Dead
@@ -151,8 +151,8 @@ public class PlayerMovement : MonoBehaviour
 
         if(gallinaTarget!=null){
             float d = Vector3.Distance(transform.position, gallinaTarget.position);
-            if(d < 3 && grounded && Input.GetButtonDown("Fire1") && canKill){
-                canKill = false;
+            if(d < 3 && grounded && Input.GetButtonDown("Fire1")/* && canKill*/){
+                //canKill = false;
                 Debug.Log("Se muere");
                 Vector3 punchDirection = gallinaTarget.position - transform.position;
                 gallinaTarget.GetComponent<Rigidbody>().AddForce(punchDirection * 3f * 2f, ForceMode.Impulse);
@@ -239,7 +239,7 @@ public class PlayerMovement : MonoBehaviour
 
         grounded = true;
         canJump = true;
-        canKill = true;
+        //canKill = true;
         m_SoundSphere.radius = minSoundRadius;
         actualRadius = minSoundRadius;
         status = Status.Active; //Starts active
