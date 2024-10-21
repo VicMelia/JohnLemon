@@ -43,7 +43,7 @@ public class GallinaHuyendoState : GallinaBaseState {
 
         Vector3 directionToFox = foxPlace.position - gallina.transform.position;
         Vector3 fleeDirection = -directionToFox.normalized;
-        Vector3 safePosition = gallina.transform.position + fleeDirection * 6;
+        Vector3 safePosition = gallina.transform.position + fleeDirection * 8;
 
         GameObject safePlace = new GameObject();
         safePlace.transform.position = safePosition;
