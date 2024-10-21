@@ -149,20 +149,23 @@ public class ConoVision : MonoBehaviour
         MeshFilter_.mesh = VisionConeMesh;
 
     }
-
+/*
     private void OnTriggerEnter(Collider other){
         Debug.Log("algo ha entrado");
          if (other.tag == tagTriggeadora) {playerDetected = true; }
 
     }
-
+*/
     private void OnTriggerStay(Collider other)
     {
         if (other.tag == tagTriggeadora) {playerDetected = true; }
-        else
+        /*else
         {
             playerDetected = false;
-        }
+        }*/
+    }
+    private void OnTriggerExit(Collider other) {
+        if (other.tag == tagTriggeadora) {playerDetected = false;}
     }
 
     /*private void OnTriggerExit( Collider other){
