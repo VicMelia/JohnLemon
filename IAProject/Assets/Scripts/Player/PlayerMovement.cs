@@ -154,9 +154,9 @@ public class PlayerMovement : MonoBehaviour
             if(d < 3 && grounded && Input.GetButtonDown("Fire1")/* && canKill*/){
                 //canKill = false;
                 Debug.Log("Se muere");
-                Vector3 punchDirection = gallinaTarget.position - transform.position;
-                gallinaTarget.GetComponent<Rigidbody>().AddForce(punchDirection * 3f * 2f, ForceMode.Impulse);
-                Destroy(gallinaTarget.gameObject, 2f);
+                //Vector3 punchDirection = gallinaTarget.position - transform.position;
+                //gallinaTarget.GetComponent<Rigidbody>().AddForce(punchDirection * 3f * 2f, ForceMode.Impulse);
+                Destroy(gallinaTarget.gameObject);
                 GameManager.Instance.liveChickens -= 1;
                 GameManager.Instance.statCheck(); //Checks if all chickens are dead
                 

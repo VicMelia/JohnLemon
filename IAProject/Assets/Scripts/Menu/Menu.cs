@@ -29,6 +29,7 @@ public class Menu : MonoBehaviour
     }
     public void YouWin()
     {
-        winMenu.SetActive(true);
+        SceneManager.LoadScene(3);
+
     }
 }

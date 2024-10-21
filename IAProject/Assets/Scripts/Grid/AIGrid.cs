@@ -78,7 +78,7 @@ public class AIGrid : MonoBehaviour
     }
 
     public List<Node> path;
-    /*void OnDrawGizmos()
+    void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));
 
@@ -93,7 +93,7 @@ public class AIGrid : MonoBehaviour
                 Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - .1f));
             }
         }
-    }*/
+    }
 
 
 
