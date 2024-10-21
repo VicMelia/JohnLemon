@@ -28,7 +28,7 @@ public class GallinaHuyendoState : GallinaBaseState {
         if (countDown <= 0) { fleeing = false; }
 
         if (fleeing) {
-
+            availableEscapePoints.Clear();
             foreach(GameObject eP in gallina.escapePoints) {
                 if (!Physics.CheckBox(eP.transform.position, eP.transform.localScale / 2, eP.transform.rotation, LayerMask.GetMask("Block"))) {
                     availableEscapePoints.Add(eP);
