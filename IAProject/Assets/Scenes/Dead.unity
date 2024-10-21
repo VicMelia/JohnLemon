@@ -411,7 +411,7 @@ PrefabInstance:
     - target: {fileID: 254500661594297388, guid: 31ec6cac22406cc4283c6601603e5528,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 621039815568809545, guid: 31ec6cac22406cc4283c6601603e5528,
         type: 3}
@@ -516,17 +516,12 @@ PrefabInstance:
     - target: {fileID: 835627549983593171, guid: 31ec6cac22406cc4283c6601603e5528,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5027166875727550985, guid: 31ec6cac22406cc4283c6601603e5528,
         type: 3}
       propertyPath: m_Name
       value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 6172400768514743956, guid: 31ec6cac22406cc4283c6601603e5528,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

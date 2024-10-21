@@ -9,6 +9,7 @@ public class Menu : MonoBehaviour
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject deadMenu;
     [SerializeField] private GameObject winMenu;
+
     public void StartGame()
     {
         SceneManager.LoadScene(1);
@@ -22,10 +23,12 @@ public class Menu : MonoBehaviour
 
     public void YouDied()
     {
-        deadMenu.SetActive(false);
+        //deadMenu.SetActive(true);
+        SceneManager.LoadScene(2);
+
     }
     public void YouWin()
     {
-        winMenu.SetActive(false);
+        winMenu.SetActive(true);
     }
 }
