@@ -60,17 +60,10 @@ public class GameManager : MonoBehaviour {
     void endGame() {
         Time.timeScale = 0;
         if (victory) {
-            canvasPrefab.transform.GetChild(1).gameObject.SetActive(true);
-            //mostrar cartel de victoria
-            
-            /*victory = false;
-            state = 1;*/
+            canvasPrefab.GetComponent<Menu>().YouWin();
         }
         else {
-            canvasPrefab.transform.GetChild(0).gameObject.SetActive(true);
-            //mostrar cartel de derrota
-            /*victory = false;
-            state = -1;*/
+            canvasPrefab.GetComponent<Menu>().YouDied();
         }
     }
 }
