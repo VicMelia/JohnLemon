@@ -13,6 +13,7 @@ TagManager:
   - Route5
   - Route 1
   - Gallina
+  - EscapePoint
   layers:
   - Default
   - TransparentFX

@@ -10,11 +10,19 @@ public class GallinaStateManager : NPC {
     public ConoVision vision;
     public List<GameObject> escapePoints = new List<GameObject>();
 
+
     void Start() {
 
         currentState = PululandoState;
         currentState.EnterState(this);
         vision = transform.GetChild(0).GetComponent<ConoVision>();
+        /*
+        GameObject startObject = new GameObject("start");
+        startObject.transform.position = transform.position;
+        escapePoints.Add(startObject);
+        */
+        
+
     }
 
     void Update() {
