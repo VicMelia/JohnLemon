@@ -14,9 +14,11 @@ GameObject:
   - component: {fileID: 95612955934908496}
   - component: {fileID: 6632401615786505742}
   - component: {fileID: 7294526618166862344}
+  - component: {fileID: 7225070704864463331}
+  - component: {fileID: 3472657210837646678}
   m_Layer: 0
   m_Name: Gallina
-  m_TagString: Untagged
+  m_TagString: Gallina
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143,6 +145,56 @@ MonoBehaviour:
   target: {fileID: 0}
   rSpeed: 3
   vision: {fileID: 7936348386747926619}
+--- !u!136 &7225070704864463331
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206511787925574}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.30502445
+  m_Height: 0.71676344
+  m_Direction: 1
+  m_Center: {x: 0.000000007450581, y: 0.36196527, z: 0.00050891936}
+--- !u!54 &3472657210837646678
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206511787925574}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &8524599355629282502
 GameObject:
   m_ObjectHideFlags: 0

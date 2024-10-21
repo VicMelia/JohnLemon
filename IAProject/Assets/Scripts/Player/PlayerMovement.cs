@@ -43,13 +43,16 @@ public class PlayerMovement : MonoBehaviour
 
     //Interaction
     private Transform holeTarget;
+    public Transform gallinaTarget;
 
     private MeshRenderer m_MeshRenderer;
 
     private Vector3 lastPosition;
 
+    private bool canKill;
+
     public enum Status { //State machine
-        Active, Interacting, Hidden, Leaving
+        Active, Interacting, Hidden, Leaving, Dead
     }
 
     public Status status;
@@ -65,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+
         if(status == Status.Active){
 
             CalculateMovement();
@@ -135,14 +139,28 @@ public class PlayerMovement : MonoBehaviour
         if(holeTarget!= null){
             float d = Vector3.Distance(transform.position,holeTarget.position);
             if(d < 5f && grounded && Input.GetKey(KeyCode.E) && holeTarget != null){ //Jumps to the hole
-            holeTarget.GetChild(0).GetComponent<BoxCollider>().enabled = false;
-            status = Status.Interacting;
-            float jumpBoost = 1.5f;
-            lastPosition = transform.position;
-            m_Rigidbody.AddForce(Vector3.up * jumpForce* jumpBoost, ForceMode.Impulse);
+                holeTarget.GetChild(0).GetComponent<BoxCollider>().enabled = false;
+                status = Status.Interacting;
+                float jumpBoost = 1.5f;
+                lastPosition = transform.position;
+                m_Rigidbody.AddForce(Vector3.up * jumpForce* jumpBoost, ForceMode.Impulse);
+                
+            }
             
         }
-            
+
+        if(gallinaTarget!=null){
+            float d = Vector3.Distance(transform.position, gallinaTarget.position);
+            if(d < 3 && grounded && Input.GetButtonDown("Fire1") && canKill){
+                canKill = false;
+                Debug.Log("Se muere");
+                Vector3 punchDirection = gallinaTarget.position - transform.position;
+                gallinaTarget.GetComponent<Rigidbody>().AddForce(punchDirection * 3f * 2f, ForceMode.Impulse);
+                Destroy(gallinaTarget.gameObject, 2f);
+                GameManager.Instance.liveChickens -= 1;
+                GameManager.Instance.statCheck(); //Checks if all chickens are dead
+                
+            }
         }
         
     }
@@ -221,6 +239,7 @@ public class PlayerMovement : MonoBehaviour
 
         grounded = true;
         canJump = true;
+        canKill = true;
         m_SoundSphere.radius = minSoundRadius;
         actualRadius = minSoundRadius;
         status = Status.Active; //Starts active
@@ -235,11 +254,14 @@ public class PlayerMovement : MonoBehaviour
 
         if(other.CompareTag("Hole")) holeTarget = other.gameObject.transform;
 
+        if(other.CompareTag("Gallina")) gallinaTarget = other.gameObject.transform;
+
     }
 
     private void OnTriggerExit(Collider other){
 
         if(status == Status.Active && other.CompareTag("Hole")) holeTarget = null;
+        if(other.CompareTag("Gallina")) gallinaTarget = null;
 
 
     }

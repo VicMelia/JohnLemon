@@ -11,6 +11,8 @@ TagManager:
   - Route3
   - Route4
   - Route5
+  - Route 1
+  - Gallina
   layers:
   - Default
   - TransparentFX
