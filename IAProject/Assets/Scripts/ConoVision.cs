@@ -150,6 +150,12 @@ public class ConoVision : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter(Collider other){
+        Debug.Log("algo ha entrado");
+         if (other.tag == tagTriggeadora) {playerDetected = true; }
+
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if (other.tag == tagTriggeadora) {playerDetected = true; }

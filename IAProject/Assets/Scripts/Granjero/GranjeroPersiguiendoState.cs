@@ -18,7 +18,7 @@ public class GranjeroPersiguiendoState : GranjeroBaseState
         Debug.Log("patata");
         granjero.GoTo(granjero.player.transform);
         //distance = Vector3.Distance (this.transform.position, granjero.target.transform.position);
-        margin = 2;
+        margin = 2.5f;
         pMv = granjero.player.GetComponent<PlayerMovement>();
         //cv = granjero.vision;
         timer = 0;
