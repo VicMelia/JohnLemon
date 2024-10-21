@@ -6,19 +6,25 @@ public class GallinaHuyendoState : GallinaBaseState {
 
     private bool fleeing = false;
     private float countDown = 3f;
+    private ConoVision cv;
     private List<GameObject> availableEscapePoints = new List<GameObject>();
+    private float distanceFoxChicken;
     GameObject fox;
     Transform foxPlace;
 
     public override void EnterState(GallinaStateManager gallina) {
-
+        Debug.Log("entrando");
         countDown = 3f;
         ScreamAndFlee(3, gallina);
+        cv = gallina.vision;
     }
 
     public override void UpdateState(GallinaStateManager gallina) {
-
+        Debug.Log (countDown);
         countDown -= Time.deltaTime;
+        float distanceFoxChicken = Vector3.Distance (fox.transform.position, gallina.transform.position);        
+        if (distanceFoxChicken > cv.VisionRange*2) gallina.vision.playerDetected = false;
+
         if (countDown <= 0) { fleeing = false; }
 
         if (fleeing) {
