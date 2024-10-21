@@ -58,12 +58,13 @@ public class GameManager : MonoBehaviour {
     }
 
     void endGame() {
-        Time.timeScale = 0;
+        
         if (victory) {
             canvasPrefab.GetComponent<Menu>().YouWin();
         }
         else {
             canvasPrefab.GetComponent<Menu>().YouDied();
         }
+        Time.timeScale = 0;
     }
 }
