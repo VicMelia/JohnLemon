@@ -33,6 +33,8 @@ public class GallinaHuyendoState : GallinaBaseState {
             }*/
         }
 
+        Debug.Log("Voy a huir!");
+
         GameObject fox = GameObject.FindGameObjectWithTag("Player");
         gallina.GoTo(GetSafePlace(gallina, fox.transform));
     }
@@ -45,6 +47,8 @@ public class GallinaHuyendoState : GallinaBaseState {
 
         GameObject safePlace = new GameObject();
         safePlace.transform.position = safePosition;
+
+        Debug.Log("Voy a huir a " + safePlace.transform.position);
 
         destination = safePlace.transform;
         return destination;
