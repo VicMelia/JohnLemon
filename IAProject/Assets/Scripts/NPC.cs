@@ -52,11 +52,13 @@ public class NPC : MonoBehaviour
 
     IEnumerator FollowPath()
     {
-        height = transform.position.y;
+        //height = transform.position.y;
         Vector3 currentWaypoint = path[0];
         currentWaypoint.y = height;
         while (true)
         {
+            currentWaypoint.y = height;
+
             if (transform.position == currentWaypoint)
             {
                 targetIndex++;
