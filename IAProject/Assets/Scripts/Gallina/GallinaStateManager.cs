@@ -11,6 +11,8 @@ public class GallinaStateManager : NPC {
 
     void Start() {
 
+        currentState = PululandoState;
+        currentState.EnterState(this);
         vision = transform.GetChild(0).GetComponent<ConoVision>();
     }
 
