@@ -20,7 +20,7 @@ public class GallinaHuyendoState : GallinaBaseState {
     }
 
     public override void UpdateState(GallinaStateManager gallina) {
-        Debug.Log (countDown);
+        //Debug.Log (countDown);
         countDown -= Time.deltaTime;
         float distanceFoxChicken = Vector3.Distance (fox.transform.position, gallina.transform.position);        
         if (distanceFoxChicken > cv.VisionRange*2) gallina.vision.playerDetected = false;
