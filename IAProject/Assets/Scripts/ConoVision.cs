@@ -158,7 +158,11 @@ public class ConoVision : MonoBehaviour
 */
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == tagTriggeadora) {playerDetected = true; }
+        if (other.tag == tagTriggeadora) {
+            if (other.gameObject.GetComponent<PlayerMovement>().status != PlayerMovement.Status.Hidden){
+                playerDetected = true;
+            }
+        }
         /*else
         {
             playerDetected = false;
