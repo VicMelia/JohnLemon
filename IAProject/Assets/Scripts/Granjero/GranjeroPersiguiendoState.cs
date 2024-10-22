@@ -12,7 +12,7 @@ public class GranjeroPersiguiendoState : GranjeroBaseState
    private ConoVision cv;
 
     public override void EnterState(GranjeroStateManager granjero){
-        granjero.tiempoPerdido = 5;
+        //granjero.tiempoPerdido = 5;
         gM = GameObject.Find("GameManager").GetComponent<GameManager>();
         //Aquí tienen que pasar cosas
         Debug.Log("patata");
